@@ -19,6 +19,16 @@ public class TestForm {
     private String keterangan;
     private long kategoriPelajaranId;
 
+    public TestForm() {
+    }
+    
+    public TestForm(Test test) {
+        name = test.getNama();
+        keterangan = test.getKeteranganTest();
+    }
+    
+    
+
     public String getName() {
         return name;
     }

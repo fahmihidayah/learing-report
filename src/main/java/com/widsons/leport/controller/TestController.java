@@ -64,13 +64,13 @@ public class TestController {
            throw new NullPointerException();
         }
         model.addAttribute("url", "/test/edit/" + id);
-        model.addAttribute("test", test);
+        model.addAttribute("test", new TestForm(test));
         model.addAttribute("kategories", kategoriPelajaranService.findAll());
         return "test_form";
     }
     
     @PostMapping("/edit/{id}")
-    public String update(@ModelAttribute @Valid Test test, BindingResult bindingResult, @PathVariable("id") long id){
+    public String update(@ModelAttribute @Valid TestForm test, BindingResult bindingResult, @PathVariable("id") long id){
         if(bindingResult.hasErrors()){
             return "test_form";
         }

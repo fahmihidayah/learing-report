@@ -39,7 +39,7 @@ public class KategoriController {
             @RequestParam("page_size") Optional<Integer> pageSize){
         Page<KategoriPelajaran> testPage = kategoriPelajaranService.findAll(page, pageSize);
         Pager pager = new Pager(testPage.getTotalPages(), testPage.getNumber(), Constantas.DEFAULT_PAGE_SHOW);
-        model.addAttribute("testPage", testPage);
+        model.addAttribute("kategoriPage", testPage);
         model.addAttribute("startPage", pager.getStartPage());
         model.addAttribute("endPage", pager.getEndPage());
         return "kategori_pelajaran_list";
@@ -54,6 +54,10 @@ public class KategoriController {
     
     @PostMapping("/create")
     public String save(@ModelAttribute @Valid KategoriPelajaran kategoriPelajaran, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "kategori_pelajaran_list";
+        }
+        kategoriPelajaranService.save(kategoriPelajaran);
         return "redirect:kategori_pelajaran/list";
     }
 }

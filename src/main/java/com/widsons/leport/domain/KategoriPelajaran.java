@@ -21,6 +21,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -34,6 +35,7 @@ public class KategoriPelajaran {
     private long id;
     
     @Column
+    @NotEmpty
     private String name;
 
     @OneToMany(mappedBy = "kategoriPelajaran")

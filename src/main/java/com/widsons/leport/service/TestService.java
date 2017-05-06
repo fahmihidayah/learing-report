@@ -56,7 +56,8 @@ public class TestService {
         return testRepository.findOne(id);
     }
     
-    public void update(Test test, long id){
+    public void update(TestForm testForm, long id){
+        Test test = testForm.toTest();
         test.setId(id);
         testRepository.save(test);
     }
