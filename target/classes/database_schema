@@ -1,0 +1,11 @@
+UserAccount -> satu -> UserAccountDetail
+
+Soal -> banyak -> jawaban
+Test -> banyak -> soal
+Kategori Pelajaran -> banyak -> test
+test -> banyak -> niali
+
+UserAccountDetail -> banyak -> Test (guru)
+UserAccountDetail -> banyak -> nilai (murid)
+
+UserAccountDetail -> banyak -> kesempatan

@@ -1,0 +1,14 @@
+com/widsons/leport/domain/Role.class
+com/widsons/leport/repository/SoalRepository.class
+com/widsons/leport/conf/DataBaseConf.class
+com/widsons/leport/conf/WebAppConf.class
+com/widsons/leport/domain/UserAccount.class
+com/widsons/leport/domain/Nilai.class
+com/widsons/leport/conf/AppInitializer.class
+com/widsons/leport/domain/Soal.class
+com/widsons/leport/conf/SecurityWebInitializer.class
+com/widsons/leport/domain/Jawaban.class
+com/widsons/leport/conf/SecurityConf.class
+com/widsons/leport/repository/NilaiRepository.class
+com/widsons/leport/conf/Constantas.class
+com/widsons/leport/controller/ApiController.class
