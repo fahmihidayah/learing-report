@@ -22,6 +22,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TestRepository extends PagingAndSortingRepository<Test, Long>{
     
+    public Page<Test> findAll(Pageable pageable);
+    
     public Page<Test> findByUserAccountDetail(UserAccountDetail userAccountDetail, Pageable pageable);
     
 }

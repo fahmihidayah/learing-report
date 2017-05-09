@@ -52,6 +52,8 @@ public class SecurityConf extends WebSecurityConfigurerAdapter{
                 .antMatchers("/signup", "/home", "/resources/**", "/about").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers("/user/**").hasAuthority("USER")
+                .antMatchers("/kategory/**").hasAnyAuthority("USER")
+                .antMatchers("/test/**").hasAnyAuthority("USER")
             .and()
                 .csrf().disable()
                 .headers().frameOptions().disable()

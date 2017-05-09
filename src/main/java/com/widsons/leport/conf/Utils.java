@@ -5,11 +5,14 @@
  */
 package com.widsons.leport.conf;
 
+import com.widsons.leport.domain.CurrentUser;
 import com.widsons.leport.domain.Role;
 import com.widsons.leport.domain.UserAccount;
+import com.widsons.leport.domain.UserAccountDetail;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  *
@@ -22,5 +25,9 @@ public class Utils {
             authoritys.add(new SimpleGrantedAuthority(role.getName()));
         }
         return authoritys;
+    }
+    
+    public static UserAccountDetail getCurrentUserAccountDetail(){
+        return ((CurrentUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUserAccount().getUserAccountDetail();
     }
 }

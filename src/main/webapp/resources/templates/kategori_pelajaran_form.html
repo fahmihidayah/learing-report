@@ -45,23 +45,12 @@
                     <div class="col-lg-6">
                         <div class="panel panel-default" style="margin-top: 10px">
                             <div class="panel-body">
-                                <form role="form" th:action="${url}" th:object="${test}" method="post">
+                                <form role="form" th:action="${url}" th:object="${kategoriPelajaran}" method="post">
                                     <fieldset>
                                         <div class="form-group">
                                             Nama : <p th:if="${#fields.hasErrors('name')}" th:errors=*{name} style="color:red">Name error</p>
                                             <input th:field="*{name}" class="form-control"/>
                                         </div>
-                                        <div class="form-group">
-                                            Keterangan : <p th:if="${#fields.hasErrors('keterangan')}" th:errors=*{keterangan} style="color:red">Keterangan Error</p>
-                                            <input th:field="*{keterangan}" class="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            Kategori : 
-                                            <select class="form-control">
-                                                <option th:each="kategori : ${kategories}" th:text="${kategori.name}" th:value="${kategori.id}">Kategories</option>
-                                            </select>
-                                        </div>
-
                                         <input type="submit" class="btn btn-success" value="Simpan" />
                                     </fieldset>
                                 </form>

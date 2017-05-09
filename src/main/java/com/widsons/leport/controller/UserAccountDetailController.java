@@ -34,8 +34,7 @@ public class UserAccountDetailController {
     @RequestMapping("dashboard")
     public String dashboard(Model model,  @RequestParam("page") Optional<Integer> page, 
             @RequestParam("page_size") Optional<Integer> pageSize, Principal principal){
-        CurrentUser currentUser = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Page<Test> testPage = testService.findByUserDetail(currentUser.getUserAccount().getUserAccountDetail(), page, pageSize);
+        Page<Test> testPage = testService.findAll(page, pageSize);
         Pager pager = new Pager(testPage.getTotalPages(), testPage.getNumber(), Constantas.DEFAULT_PAGE_SHOW);
         model.addAttribute("testPage", testPage);
         model.addAttribute("startPage", pager.getStartPage());

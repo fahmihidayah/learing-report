@@ -5,30 +5,37 @@
  */
 package com.widsons.leport.controller;
 
+import com.widsons.leport.conf.Constantas;
 import com.widsons.leport.domain.CurrentUser;
+import com.widsons.leport.domain.Pager;
 import com.widsons.leport.domain.Test;
 import com.widsons.leport.domain.form.TestForm;
 import com.widsons.leport.service.KategoriPelajaranService;
 import com.widsons.leport.service.TestService;
+import java.security.Principal;
+import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
  * @author fahmi
  */
 @Controller
-@RequestMapping("/test/")
+@RequestMapping("/user/test/")
 public class TestController {
     
     @Autowired
@@ -37,9 +44,20 @@ public class TestController {
     @Autowired
     KategoriPelajaranService kategoriPelajaranService;
     
+    @RequestMapping("/list")
+    public String dashboard(Model model,  @RequestParam("page") Optional<Integer> page, 
+            @RequestParam("page_size") Optional<Integer> pageSize, Principal principal){
+        CurrentUser currentUser = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Page<Test> testPage = testService.findByUserDetail(currentUser.getUserAccount().getUserAccountDetail(), page, pageSize);
+        Pager pager = new Pager(testPage.getTotalPages(), testPage.getNumber(), Constantas.DEFAULT_PAGE_SHOW);
+        model.addAttribute("testPage", testPage);
+        model.addAttribute("startPage", pager.getStartPage());
+        model.addAttribute("endPage", pager.getEndPage());
+        return "test_list";
+    }
+    
     @RequestMapping("/create")
     public String create(Model model){
-        model.addAttribute("url", "/test/create");
         model.addAttribute("test", new TestForm());
         model.addAttribute("kategories", kategoriPelajaranService.findAll());
         return "test_form";
@@ -50,9 +68,7 @@ public class TestController {
         if(bindingResult.hasErrors()){
             return "test_form";
         }
-        CurrentUser currentUser = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println("current user is " + currentUser.getUserAccount().getUserAccountDetail().getId());
-        testService.save(currentUser.getUserAccount().getUserAccountDetail(), test);
+        testService.save(test);
         return "redirect:/user/dashboard";
     }
     
@@ -63,7 +79,6 @@ public class TestController {
         if(test == null) {
            throw new NullPointerException();
         }
-        model.addAttribute("url", "/test/edit/" + id);
         model.addAttribute("test", new TestForm(test));
         model.addAttribute("kategories", kategoriPelajaranService.findAll());
         return "test_form";
@@ -76,5 +91,11 @@ public class TestController {
         }
         testService.update(test, id);
         return "redirect:/user/dashboard";
+    }
+    
+    @GetMapping("/detail/{id}")
+    public String detail(Model model, @PathVariable("id") long id){
+        model.addAttribute("test", testService.findById(id));
+        return "test_detail";
     }
 }

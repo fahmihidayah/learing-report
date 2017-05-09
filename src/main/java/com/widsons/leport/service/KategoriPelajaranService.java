@@ -56,4 +56,8 @@ public class KategoriPelajaranService {
     public Iterable<KategoriPelajaran> findAll(){
         return kategoriPelajaranRepository.findAll();
     }
+    
+    public KategoriPelajaran findById(long id){
+        return kategoriPelajaranRepository.findOne(id);
+    }
 }

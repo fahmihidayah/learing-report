@@ -56,6 +56,7 @@
                                                 <th>Nama</th>
                                                 <th>Keterangan</th>
                                                 <th></th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -63,27 +64,29 @@
                                                 <td th:text="${test.id}">1</td>
                                                 <td th:text="${test.nama}">Fahmi</td>
                                                 <td th:text="${test.keteranganTest}">Malang</td>
-                                                <td><a th:href="@{/user/test_detail/} + ${test.id}" class="btn btn-primary">Ikuti Test</a></td>
+                                                <td><a th:href="@{/user/test/edit/} + ${test.id}" class="btn btn-primary">edit</a></td>
+                                                <td><a th:href="@{/user/test/delete/} + ${test.id}" class="btn btn-danger">delete</a></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                     <div>
+                                        <a th:href="@{/user/test/create}" class="btn btn-primary">Tambah baru</a>
                                         <ul class="pagination pull-right">
                                             <li th:class="${testPage.number == 0} ? disabled">
-                                                <a class="pageLink" th:href="@{/test/list/(page=1)}">&laquo;</a>
+                                                <a class="pageLink" th:href="@{/user/test/list/(page=1)}">&laquo;</a>
                                             </li>
                                             <li th:class="${testPage.number == 0} ? disabled">
-                                                <a class="pageLink" th:href="@{/patient/list/(page=${testPage.number})}">&larr;</a>
+                                                <a class="pageLink" th:href="@{/user/test/list/(page=${testPage.number})}">&larr;</a>
                                             </li>
                                             <li th:class="${testPage.number == (page - 1)} ? 'active pointer-disabled'"
                                                 th:each="page : ${#numbers.sequence(startPage, endPage)}">
-                                                <a class="pageLink" th:href="@{/test/list/(page=${page})}" th:text="${page}"></a>
+                                                <a class="pageLink" th:href="@{/user/test/list/(page=${page})}" th:text="${page}"></a>
                                             </li><!--
 -->                                         <li th:class="${testPage.number + 1 == testPage.totalPages} ? disabled">
-                                                <a class="pageLink" th:href="@{/patient/list/(page=${testPage.number + 2})}">&rarr;</a>
+                                                <a class="pageLink" th:href="@{/user/test/list/(page=${testPage.number + 2})}">&rarr;</a>
                                             </li>
                                             <li th:class="${testPage.number + 1 == testPage.totalPages} ? disabled">
-                                                <a class="pageLink" th:href="@{/patient/list/(page=${testPage.totalPages})}">&raquo;</a>
+                                                <a class="pageLink" th:href="@{/user/test/list/(page=${testPage.totalPages})}">&raquo;</a>
                                             </li>
                                         </ul>
                                     </div>
