@@ -31,9 +31,6 @@ public class Soal {
     @Column
     private String teksSoal;
     
-    @Column
-    private int jawabanBenar;
-    
     @OneToMany(mappedBy = "soal")
     private List<Jawaban> jawabans = new ArrayList<>();
 
@@ -55,15 +52,7 @@ public class Soal {
     public void setTeksSoal(String teksSoal) {
         this.teksSoal = teksSoal;
     }
-
-    public int getJawabanBenar() {
-        return jawabanBenar;
-    }
-
-    public void setJawabanBenar(int jawabanBenar) {
-        this.jawabanBenar = jawabanBenar;
-    }
-
+    
     public List<Jawaban> getJawabans() {
         return jawabans;
     }

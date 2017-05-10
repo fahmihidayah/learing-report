@@ -24,6 +24,8 @@ public class Jawaban {
     private long id;
     @Column
     private String teksJawaban;
+    @Column
+    private boolean isJawabanBenar;
     
     @ManyToOne(cascade = CascadeType.ALL)
     private Soal soal;
@@ -51,7 +53,13 @@ public class Jawaban {
     public void setSoal(Soal soal) {
         this.soal = soal;
     }
-    
-    
+
+    public boolean isIsJawabanBenar() {
+        return isJawabanBenar;
+    }
+
+    public void setIsJawabanBenar(boolean isJawabanBenar) {
+        this.isJawabanBenar = isJawabanBenar;
+    }
     
 }

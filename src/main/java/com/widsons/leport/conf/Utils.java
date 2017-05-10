@@ -6,7 +6,9 @@
 package com.widsons.leport.conf;
 
 import com.widsons.leport.domain.CurrentUser;
+import com.widsons.leport.domain.Jawaban;
 import com.widsons.leport.domain.Role;
+import com.widsons.leport.domain.Soal;
 import com.widsons.leport.domain.UserAccount;
 import com.widsons.leport.domain.UserAccountDetail;
 import java.util.HashSet;
@@ -29,5 +31,13 @@ public class Utils {
     
     public static UserAccountDetail getCurrentUserAccountDetail(){
         return ((CurrentUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUserAccount().getUserAccountDetail();
+    }
+    
+    public static Soal createSoalForm(){
+        Soal soal = new Soal();
+        for(int i = 0; i < 5; i++){
+            soal.getJawabans().add(new Jawaban());
+        }
+        return soal;
     }
 }

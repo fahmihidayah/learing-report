@@ -9,6 +9,7 @@
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/conf/AppInitializer.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/conf/Utils.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/service/SecurityService.java
+/Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/domain/form/SoalForm.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/conf/SecurityConf.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/domain/form/TestForm.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/domain/Nilai.java
@@ -35,6 +36,7 @@
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/domain/Pager.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/repository/RoleRepository.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/repository/UserAccountRepository.java
+/Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/controller/SoalController.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/controller/ApiController.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/conf/Constantas.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/conf/SecurityWebInitializer.java
