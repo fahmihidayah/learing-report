@@ -8,9 +8,11 @@ package com.widsons.leport.controller;
 import com.widsons.leport.conf.Constantas;
 import com.widsons.leport.domain.CurrentUser;
 import com.widsons.leport.domain.Pager;
+import com.widsons.leport.domain.Soal;
 import com.widsons.leport.domain.Test;
 import com.widsons.leport.domain.form.TestForm;
 import com.widsons.leport.service.KategoriPelajaranService;
+import com.widsons.leport.service.SoalService;
 import com.widsons.leport.service.TestService;
 import java.security.Principal;
 import java.util.Optional;
@@ -43,6 +45,9 @@ public class TestController {
     
     @Autowired
     KategoriPelajaranService kategoriPelajaranService;
+    
+    @Autowired
+    SoalService soalService;
     
     @RequestMapping("/list")
     public String dashboard(Model model,  @RequestParam("page") Optional<Integer> page, 
@@ -94,8 +99,16 @@ public class TestController {
     }
     
     @GetMapping("/detail/{id}")
-    public String detail(Model model, @PathVariable("id") long id){
+    public String detail(Model model, @PathVariable("id") long id, @RequestParam("page_size") Optional<Integer> pageSize){
+        Test test = testService.findById(id);
+        Page<Soal> soalPage = soalService.findByUserDetail(test, pageSize, pageSize);
         model.addAttribute("test", testService.findById(id));
+        model.addAttribute("page", soalService.findByUserDetail(test, pageSize, pageSize));
+        Pager pager = new Pager(soalPage.getTotalPages(), soalPage.getNumber(), Constantas.DEFAULT_PAGE_SHOW);
+        model.addAttribute("testPage", soalPage);
+        model.addAttribute("startPage", pager.getStartPage());
+        model.addAttribute("endPage", pager.getEndPage());
         return "test_detail";
     }
+    
 }

@@ -40,7 +40,7 @@ public class Test {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "test")
     private List<Soal> soals = new ArrayList<>();
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private KategoriPelajaran kategoriPelajaran;
     
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
