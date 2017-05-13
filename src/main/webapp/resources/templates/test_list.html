@@ -64,6 +64,7 @@
                                                 <td th:text="${test.id}">1</td>
                                                 <td th:text="${test.nama}">Fahmi</td>
                                                 <td th:text="${test.keteranganTest}">Malang</td>
+                                                <td><a th:href="@{/user/test/detail/} + ${test.id}">detail</a></td>
                                                 <td><a th:href="@{/user/test/edit/} + ${test.id}" class="btn btn-primary">edit</a></td>
                                                 <td><a th:href="@{/user/test/delete/} + ${test.id}" class="btn btn-danger">delete</a></td>
                                             </tr>

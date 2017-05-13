@@ -98,7 +98,7 @@
                                     </table>
                                 </div>
                                 <div>
-                                    <a th:href="@{/user/soal/create}" class="btn btn-primary">Tambah baru</a>
+                                    <a th:href="@{/user/soal/create/(test_id=${test.id})}" class="btn btn-primary">Tambah baru</a>
                                     <ul class="pagination pull-right">
                                         <li th:class="${pageData.number == 0} ? disabled">
                                             <a class="pageLink" th:href="@{/test/detail/(page=1)}">&laquo;</a>
