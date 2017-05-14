@@ -8,6 +8,7 @@ package com.widsons.leport.domain;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class Jawaban {
     @Column
     private boolean isJawabanBenar;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Soal soal;
 
     public long getId() {
@@ -62,6 +63,11 @@ public class Jawaban {
 
     public void setIsJawabanBenar(boolean isJawabanBenar) {
         this.isJawabanBenar = isJawabanBenar;
+    }
+    
+    public void setAttribteValue(Jawaban jawaban){
+        teksJawaban = jawaban.getTeksJawaban();
+        isJawabanBenar = jawaban.isJawabanBenar;
     }
     
 }

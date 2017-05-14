@@ -41,4 +41,13 @@ public class JawabanService {
         }
     }
     
+    public void deleteBySoal(Soal soal){
+        jawabanRepository.deleteBySoal(soal);
+    }
+    
+    public void deleteBySoalId(long soalId){
+        jawabanRepository.deleteBySoalId(soalId);
+    }
+    
+    
 }

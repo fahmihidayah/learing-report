@@ -54,13 +54,25 @@ public class SoalService {
         jawabanService.save(soalNew, jawabans);
     }
     
+    public void delete(long soalId){
+//        jawabanService.deleteBySoalId(soalId);
+        soalRepository.delete(soalId);
+    }
+    
     public Soal findById(long soalId){
         return soalRepository.findOne(soalId);
     }
     
     public void update(long soalId, Soal soal){
-        soal.setId(soalId);
-        soalRepository.save(soal);
+        Soal soalOld = soalRepository.findOne(soalId);
+        soalOld.setTeksSoal(soal.getTeksSoal());
+        List<Jawaban> jawabansold = soalOld.getJawabans();
+        for(int i = 0; i < soal.getJawabans().size(); i++){
+            Jawaban jawabanOld = jawabansold.get(i);
+            Jawaban jawabanNew = soal.getJawabans().get(i);
+            jawabanOld.setAttribteValue(jawabanNew);
+        }
+        soalRepository.save(soalOld);
     }
     
 }

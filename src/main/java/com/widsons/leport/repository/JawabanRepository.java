@@ -6,6 +6,7 @@
 package com.widsons.leport.repository;
 
 import com.widsons.leport.domain.Jawaban;
+import com.widsons.leport.domain.Soal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +16,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface JawabanRepository extends JpaRepository<Jawaban, Long>{
+    
+    public void deleteBySoal(Soal soal);
+    
+    public void deleteBySoalId(long soalId);
     
 }

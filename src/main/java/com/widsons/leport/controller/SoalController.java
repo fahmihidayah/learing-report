@@ -53,8 +53,16 @@ public class SoalController {
     }
     
     @PostMapping("/edit/{id}")
-    public String update(Model model, @ModelAttribute Soal soal, @PathVariable("id") long id, @RequestParam("test_id") long testId){
+    public String update(Model model, @ModelAttribute Soal soal, @PathVariable("id") long id){
         soalService.update(id, soal);
-        return "redirect:/user/test/detail/" + testId;
+        soal = soalService.findById(id);
+        return "redirect:/user/test/detail/" + soal.getTest().getId();
+    }
+    
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") long id){
+        Soal soal = soalService.findById(id);
+        soalService.delete(id);
+        return "redirect:/user/test/detail" + soal.getTest().getId();
     }
 }
