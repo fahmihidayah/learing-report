@@ -101,7 +101,6 @@ public class TestController {
     @GetMapping("/detail/{id}")
     public String detail(Model model, @PathVariable("id") long id, @RequestParam("page_size") Optional<Integer> pageSize){
         Test test = testService.findById(id);
-        System.out.println("nama test is " + test.getNama());
         Page<Soal> soalPage = soalService.findByUserDetail(test, pageSize, pageSize);
         model.addAttribute("test", test);
         Pager pager = new Pager(soalPage.getTotalPages(), soalPage.getNumber(), Constantas.DEFAULT_PAGE_SHOW);

@@ -8,6 +8,7 @@
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/service/UserDetailServiceImpl.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/conf/AppInitializer.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/conf/Utils.java
+/Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/service/JawabanService.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/service/SecurityService.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/domain/form/SoalForm.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/conf/SecurityConf.java
@@ -19,6 +20,7 @@
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/repository/KategoriPelajaranRepository.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/controller/UserAccountDetailController.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/repository/PelajaranRepository.java
+/Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/repository/JawabanRepository.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/controller/BaseController.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/domain/Jawaban.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/service/SoalService.java
@@ -31,6 +33,7 @@
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/service/KategoriPelajaranService.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/service/SecurityServiceImpl.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/controller/TestController.java
+/Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/domain/form/JawabanForm.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/domain/UserAccountDetail.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/domain/KategoriPelajaran.java
 /Users/fahmi/Documents/Netbeans-web/learning-report/src/main/java/com/widsons/leport/domain/Pager.java

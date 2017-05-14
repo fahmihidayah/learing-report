@@ -8,10 +8,13 @@ package com.widsons.leport.controller;
 import com.widsons.leport.conf.Utils;
 import com.widsons.leport.domain.Jawaban;
 import com.widsons.leport.domain.Soal;
+import com.widsons.leport.service.SoalService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,21 +27,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/user/soal/")
 public class SoalController {
     
+    @Autowired
+    SoalService soalService;
+    
     @GetMapping("/create")
     public String create(Model model, @RequestParam("test_id") long testId){
         model.addAttribute("soal", Utils.createSoalForm());
+        model.addAttribute("test_id", testId);
         return "soal_form";
     }
     
     
     @PostMapping("/create")
-    public String save(Model model, @ModelAttribute Soal soal){
-        System.out.println("---------------------------------------------------------------");
-        System.out.println("soal is " + soal.getTeksSoal());
-        for(Jawaban jawaban : soal.getJawabans()){
-            System.out.println("jawabans is " + jawaban.getTeksJawaban() + " " + jawaban.isIsJawabanBenar());
-        }
-        System.out.println("---------------------------------------------------------------");
+    public String save(Model model, @ModelAttribute Soal soal, @RequestParam("test_id") long testId){
+        soalService.save(testId, soal);
+        return "redirect:/user/test/detail/" + testId;
+    }
+    
+    @GetMapping("/edit/{id}")
+    public String edit(Model model, @PathVariable("id") long id){
+        Soal soal = soalService.findById(id);
+        model.addAttribute("soal", soal);
+        model.addAttribute("test_id", soal.getTest().getId());
         return "soal_form";
+    }
+    
+    @PostMapping("/edit/{id}")
+    public String update(Model model, @ModelAttribute Soal soal, @PathVariable("id") long id, @RequestParam("test_id") long testId){
+        soalService.update(id, soal);
+        return "redirect:/user/test/detail/" + testId;
     }
 }

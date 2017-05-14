@@ -50,6 +50,8 @@
                             <div class="panel panel-body">
                                 <form method="post" th:object="${soal}">
                                     <fieldset>
+                                        <input type="hidden" value="${test_id}"/>
+                                           
                                         <div class="form-group">
                                             <p>Teks Soal :</p> 
                                             <textarea class="form-control" th:field="*{teksSoal}" th:text="*{teksSoal}" rows="5"></textarea>
