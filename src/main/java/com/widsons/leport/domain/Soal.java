@@ -36,7 +36,7 @@ public class Soal {
     @OneToMany(mappedBy = "soal", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Jawaban> jawabans = new ArrayList<>();
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Test test;
     
     public long getId() {

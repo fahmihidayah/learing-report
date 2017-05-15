@@ -63,6 +63,6 @@ public class SoalController {
     public String delete(@PathVariable("id") long id){
         Soal soal = soalService.findById(id);
         soalService.delete(id);
-        return "redirect:/user/test/detail" + soal.getTest().getId();
+        return "redirect:/user/test/detail/" + soal.getTest().getId();
     }
 }
