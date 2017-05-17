@@ -62,12 +62,29 @@
                                             <td>Keterangan :</td>
                                             <td th:text="${test.keteranganTest}">Test Pertama</td>
                                         </tr>
-                                        <!--                                        <tr>
-                                                                                    <td>Kategori :</td>
-                                                                                    <td th:text="${test.kategoriPelajaran.name}">Fiber Optik</td>
-                                                                                </tr>-->
                                     </tbody>
                                 </table>
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="panel panel-default" style="margin-top: 10px">
+                                            <div class="panel-body">
+                                                <form th:action="@{/user/test/import}" th:method="post" enctype="multipart/form-data">
+                                                    <input type="file" name="file_import" />
+                                                    <input type="hidden" name="test_id" th:value="${test.id}"/>
+                                                    <input type="submit" title="Submit"/>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="panel panel-default" style="margin-top: 10px">
+                                            <div class="panel-body">
+                                                <a class="btn btn-primary">Cetak Soal</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -104,17 +121,17 @@
                                             <a class="pageLink" th:href="@{/test/detail/(page=1)}">&laquo;</a>
                                         </li>
                                         <li th:class="${pageData.number == 0} ? disabled">
-                                            <a class="pageLink" th:href="@{/kategori_pelajaran/list/(page=${pageData.number})}">&larr;</a>
+                                            <a class="pageLink" th:href="@{/test/detail/(page=${pageData.number})}">&larr;</a>
                                         </li>
                                         <li th:class="${pageData.number == (page - 1)} ? 'active pointer-disabled'"
                                             th:each="page : ${#numbers.sequence(startPage, endPage)}">
-                                            <a class="pageLink" th:href="@{/kategori_pelajaran/list/(page=${page})}" th:text="${page}"></a>
+                                            <a class="pageLink" th:href="@{/test/detail/(page=${page})}" th:text="${page}"></a>
                                         </li>
                                         <li th:class="${pageData.number + 1 == pageData.totalPages} ? disabled">
-                                            <a class="pageLink" th:href="@{/kategori_pelajaran/list/(page=${pageData.number + 2})}">&rarr;</a>
+                                            <a class="pageLink" th:href="@{/test/detail/(page=${pageData.number + 2})}">&rarr;</a>
                                         </li>
                                         <li th:class="${pageData.number + 1 == pageData.totalPages} ? disabled">
-                                            <a class="pageLink" th:href="@{/kategori_pelajaran/list/(page=${pageData.totalPages})}">&raquo;</a>
+                                            <a class="pageLink" th:href="@{/test/detail/(page=${pageData.totalPages})}">&raquo;</a>
                                         </li>
                                     </ul>
                                 </div> 

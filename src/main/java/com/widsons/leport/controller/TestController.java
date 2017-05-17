@@ -17,6 +17,8 @@ import com.widsons.leport.service.TestService;
 import java.security.Principal;
 import java.util.Optional;
 import javax.validation.Valid;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.WorkbookUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.context.SecurityContext;
@@ -31,6 +33,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -109,5 +112,13 @@ public class TestController {
         model.addAttribute("endPage", pager.getEndPage());
         return "test_detail";
     }
+    
+    @PostMapping("/import")
+    public String export(@RequestParam("file_import") MultipartFile multiPartFile, @RequestParam("test_id") long id){
+        
+        System.out.println("file is " + multiPartFile.getContentType());
+        return "redirect:/user/test/detail/" + id;
+    }
+    
     
 }
